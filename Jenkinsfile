@@ -19,7 +19,7 @@ pipeline {
                 sh '''
                 docker stop static-site || true
                 docker rm static-site || true
-                docker run -d --name static-site -p 80:80 static-site
+                docker run -d --name static-site -p 8081:80 static-site
                 '''
             }
         }
