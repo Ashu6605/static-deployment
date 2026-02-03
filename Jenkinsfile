@@ -2,14 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repo') {
-            steps { git 'https://github.com/Ashu6605/static-deployment.git' }
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
         }
-        stage('Build Image') {
-            steps { 
+
+        stage('Build Docker Image') {
+            steps {
                 sh 'docker build -t static-site .'
             }
         }
+
         stage('Run Container') {
             steps {
                 sh '''
